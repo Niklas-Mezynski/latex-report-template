@@ -1,0 +1,85 @@
+\documentclass[]{report}
+\setcounter{secnumdepth}{3}
+\renewcommand\thesection{\arabic{section}}%for page numbering style
+\usepackage{graphicx,tabularx}%for figures and tables
+\usepackage[utf8]{inputenc} %allows special characters such as ä, ö, ỳ
+\usepackage[english]{babel} %set the language to English
+\usepackage[margin=1.5in]{geometry} %change page margins
+\usepackage{sectsty}%section headers
+\allsectionsfont{\sffamily\large}
+\subsectionfont{\sffamily\normalsize}
+\subsubsectionfont{\sffamily\normalsize}
+\linespread{1.2}% line distance
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage{caption}%use for captions on tables
+\usepackage{float}
+\usepackage{xstring}
+%use this exact command. The style and bibliographystyle has to be author year (Harvard). The sorting is nyt: name, year, title so that the bibliography is sorted alphabetically. firstInits=true shortens the names: Albert Einstein -> A. Einstein
+\usepackage[backend=bibtex,style=authoryear,bibstyle=authoryear,sorting=nyt,firstinits=true]{biblatex}
+% Declare custom cite command for personal communication
+\DeclareAutoCiteCommand{inline}{\mycite}{\cites}
+\DeclareCiteCommand{\mycite}
+ {}{\ifentrytype{misc}{%
+ \IfStrEq{\thefield{howpublished}}{personal communication}
+ {\mkbibparens{\printnames{labelname}, personal communication, \printdate}}
+ {\mkbibparens{\usebibmacro{cite}}}%
+ }
+ {\mkbibparens{\usebibmacro{cite}}}%
+ }{}{}
+
+\usepackage{csquotes}
+\setlength\parindent{0pt}%include this so that your paragraphs don't indent automatically
+
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+\usepackage{glossaries}
+
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+
+\addbibresource{main.bib} %attaches your bib-file, your bibliography (must be in the same folder)
+\graphicspath{ {./assets/} }
+
+% Make glossaries
+\makenoidxglossaries
+\usepackage{pages/dict}
+
+% Title Page
+\title{Report}
+\author{Niklas Mezynski}
+\date{\today \\Internship \\Venlo, Limburg, Netherlands}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    Your abstract.
+\end{abstract}
+
+\pagenumbering{gobble}
+
+\tableofcontents
+\newpage
+
+\listoffigures
+\newpage
+
+\listoftables
+\newpage
+
+\printnoidxglossaries
+\cleardoublepage
+\pagenumbering{arabic}
+
+\section{Introduction}
+Introduction
+
+\section{Main part}
+Main part
+
+\section{Conclusion}
+Conclusion
+
+\printbibliography[title=References]
+\end{document}
