@@ -14,9 +14,14 @@
 \usepackage{caption}%use for captions on tables
 \usepackage{float}
 \usepackage{xstring}
+\usepackage{pdfpages}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{longtable}
+
 %use this exact command. The style and bibliographystyle has to be author year (Harvard). The sorting is nyt: name, year, title so that the bibliography is sorted alphabetically. firstInits=true shortens the names: Albert Einstein -> A. Einstein
 \usepackage[backend=bibtex,style=authoryear,bibstyle=authoryear,sorting=nyt,firstinits=true]{biblatex}
-% Declare custom cite command for personal communication
+% Declare custom cite command for personal communication (optional)
 \DeclareAutoCiteCommand{inline}{\mycite}{\cites}
 \DeclareCiteCommand{\mycite}
  {}{\ifentrytype{misc}{%
@@ -26,6 +31,7 @@
  }
  {\mkbibparens{\usebibmacro{cite}}}%
  }{}{}
+% End of custom cite command
 
 \usepackage{csquotes}
 \setlength\parindent{0pt}%include this so that your paragraphs don't indent automatically
@@ -44,6 +50,9 @@
 % Make glossaries
 \makenoidxglossaries
 \usepackage{pages/dict}
+
+% Makes the text of glossary entries italic
+\renewcommand{\glstextformat}[1]{\textit{#1}}
 
 % Title Page
 \title{Report}
