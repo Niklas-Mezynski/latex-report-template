@@ -20,7 +20,7 @@
 \usepackage{longtable}
 
 %use this exact command. The style and bibliographystyle has to be author year (Harvard). The sorting is nyt: name, year, title so that the bibliography is sorted alphabetically. firstInits=true shortens the names: Albert Einstein -> A. Einstein
-\usepackage[backend=bibtex,style=authoryear,bibstyle=authoryear,sorting=nyt,firstinits=true]{biblatex}
+\usepackage[backend=bibtex,style=authoryear,bibstyle=authoryear,sorting=nyt,firstinits=true,uniquename=init]{biblatex}
 % Declare custom cite command for personal communication (optional)
 \DeclareAutoCiteCommand{inline}{\mycite}{\cites}
 \DeclareCiteCommand{\mycite}
@@ -55,9 +55,9 @@
 \renewcommand{\glstextformat}[1]{\textit{#1}}
 
 % Title Page
-\title{Report}
-\author{Niklas Mezynski}
-\date{\today \\Internship \\Venlo, Limburg, Netherlands}
+\title{Document Title}
+\author{Author Name}
+\date{\today \\Subtitle 1 \\Subtitle 2}
 
 \begin{document}
 \maketitle
@@ -68,6 +68,7 @@
 
 \pagenumbering{gobble}
 
+\setcounter{tocdepth}{3} % Sets the depth for the table of contents
 \tableofcontents
 \newpage
 
@@ -82,13 +83,13 @@
 \pagenumbering{arabic}
 
 \section{Introduction}
-Introduction
+Introduction.
 
 \section{Main part}
-Main part
+Main part.
 
 \section{Conclusion}
-Conclusion
+Conclusion.
 
 \printbibliography[title=References]
 \end{document}
