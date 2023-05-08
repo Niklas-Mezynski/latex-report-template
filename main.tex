@@ -30,15 +30,20 @@
 \begin{document}
 
 \maketitle % Print the title
+
+% Remove page number from title page
+\thispagestyle{empty}
+
 \newpage
 
 %----------------------------------------------------------------------------------------
 %	ToC and so on
 %----------------------------------------------------------------------------------------
 
-\pagenumbering{gobble}
+\pagenumbering{roman}
 
-\setcounter{tocdepth}{3}
+% Table of contents depth of contents
+\setcounter{tocdepth}{2}
 \tableofcontents
 \newpage
 
@@ -51,7 +56,7 @@
 \printnoidxglossaries
 \cleardoublepage
 \pagenumbering{arabic}
-\setcounter{section}{1}
+\setcounter{section}{0}
 
 %------------------------------------------------
 
